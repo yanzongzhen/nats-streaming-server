@@ -24,8 +24,8 @@ import (
 	natsd "github.com/yanzongzhen/nats-server/server"
 	stand "github.com/yanzongzhen/nats-streaming-server/server"
 
-	_ "github.com/go-sql-driver/mysql"                              // mysql driver
-	_ "github.com/lib/pq"                                           // postgres driver
+	_ "github.com/go-sql-driver/mysql"                                  // mysql driver
+	_ "github.com/lib/pq"                                               // postgres driver
 	_ "github.com/yanzongzhen/nats-streaming-server/stores/pqdeadlines" // wrapper for postgres that gives read/write deadlines
 )
 
@@ -34,6 +34,8 @@ Usage: nats-streaming-server [options]
 
 Streaming Server Options:
     -cid, --cluster_id  <string>         Cluster ID (default: test-cluster)
+    -sctp <bool>                         Run the server in sctp protocol (default: false)
+    -topic_group_limit <int>             Topic Group Limit (default: 5)
     -st,  --store <string>               Store type: MEMORY|FILE|SQL (default: MEMORY)
           --dir <string>                 For FILE store type, this is the root directory
     -mc,  --max_channels <int>           Max number of channels (0 for unlimited)
@@ -180,5 +182,6 @@ func parseFlags() (*stand.Options, *natsd.Options) {
 	if err != nil {
 		natsd.PrintAndDie(err.Error())
 	}
+	stanOpts.Sctp = natsOpts.Sctp
 	return stanOpts, natsOpts
 }

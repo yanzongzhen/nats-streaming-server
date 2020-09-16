@@ -59,7 +59,7 @@ func ProcessConfigFile(configFile string, opts *Options) error {
 				return err
 			}
 			opts.ID = v.(string)
-		case "group_limit":
+		case "topic_group_limit":
 			if err := checkType(k, reflect.Int64, v); err != nil {
 				return err
 			}

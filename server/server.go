@@ -32,6 +32,7 @@ import (
 	"time"
 
 	"github.com/hashicorp/raft"
+	"github.com/nats-io/nuid"
 	natsdLogger "github.com/yanzongzhen/nats-server/logger"
 	"github.com/yanzongzhen/nats-server/server"
 	"github.com/yanzongzhen/nats-streaming-server/logger"
@@ -39,7 +40,6 @@ import (
 	"github.com/yanzongzhen/nats-streaming-server/stores"
 	"github.com/yanzongzhen/nats-streaming-server/util"
 	"github.com/yanzongzhen/nats.go"
-	"github.com/nats-io/nuid"
 	"github.com/yanzongzhen/stan.go/pb"
 )
 
@@ -62,7 +62,7 @@ const (
 	defaultRaftPrefix     = "_STAN.raft"
 	DefaultRequestTopic   = "_STAN.client_join_topic"
 	DefaultStoreType      = stores.TypeMemory
-	DefaultGroupLimit     = 1000
+	DefaultGroupLimit     = 5
 
 	// Prefix of subject active server is sending HBs to
 	ftHBPrefix = "_STAN.ft"
@@ -1337,6 +1337,7 @@ type Options struct {
 	NATSClientOpts     []nats.Option
 
 	GroupLimit int
+	Sctp       bool
 }
 
 // Clone returns a deep copy of the Options object.
@@ -1479,6 +1480,8 @@ func (s *StanServer) createNatsClientConn(name string) (*nats.Conn, error) {
 	if s.opts.NATSCredentials != "" {
 		nats.UserCredentials(s.opts.NATSCredentials)(&ncOpts)
 	}
+
+	ncOpts.Sctp = s.opts.Sctp
 
 	for _, o := range s.opts.NATSClientOpts {
 		o(&ncOpts)
@@ -1677,6 +1680,7 @@ func RunServerWithOpts(stanOpts *Options, natsOpts *server.Options) (newServer *
 	}
 
 	s.log.Noticef("Starting nats-streaming-server[%s] version %s", sOpts.ID, VERSION)
+	s.log.Noticef("Streaming Nats Server Run at Sctp : %v", s.opts.Sctp)
 
 	// ServerID is used to check that a brodcast protocol is not ours,
 	// for instance with FT. Some err/warn messages may be printed

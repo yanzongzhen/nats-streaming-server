@@ -11,8 +11,8 @@ require (
 	github.com/lib/pq v1.7.0
 	github.com/nats-io/nuid v1.0.1
 	github.com/prometheus/procfs v0.0.8
-	github.com/yanzongzhen/nats-server v1.2.0
-	github.com/yanzongzhen/nats.go v1.10.2
+	github.com/yanzongzhen/nats-server v1.2.1
+	github.com/yanzongzhen/nats.go v1.10.3
 	github.com/yanzongzhen/stan.go v0.7.0
 	go.etcd.io/bbolt v1.3.5
 	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9
