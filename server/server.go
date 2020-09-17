@@ -1913,6 +1913,7 @@ func (s *StanServer) start(runningState State) error {
 	// Recover the state.
 	s.log.Noticef("Recovering the state...")
 	recoveredState, err = s.store.Recover()
+	s.log.Noticef("recoveredState : %v", recoveredState)
 	if err != nil {
 		return err
 	}
@@ -4495,7 +4496,7 @@ func (s *StanServer) processUnsubscribeRequest(m *nats.Msg) {
 	req := &pb.UnsubscribeRequest{}
 	err := req.Unmarshal(m.Data)
 	client := s.TopicGroupSnapshot.GetClient(req.ClientID, req.Subject)
-	s.log.Noticef("lost connect %v", client)
+	s.log.Debugf("lost connect %v", client)
 	if client != nil {
 		group := client.Group
 		s.TopicGroupSnapshot.Delete(client, true)

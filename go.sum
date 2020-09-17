@@ -109,7 +109,9 @@ github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/
 github.com/tv42/httpunix v0.0.0-20150427012821-b75d8614f926/go.mod h1:9ESjWnEqriFuLhtthL60Sar/7RFoluCcXsuvEwTV5KM=
 github.com/yanzongzhen/nats-server v1.2.0 h1:5/H9EZfNvjoMDL+yV1G7qgc/qYLSbMAXQ9tZlY+52LY=
 github.com/yanzongzhen/nats-server v1.2.0/go.mod h1:FE9vY5/GIFZ8oScVKJZbt2cR8jhR3GCQVEXIAAOPziY=
+github.com/yanzongzhen/nats-server v1.2.1 h1:kFNpHoZQKYvjf/jdoZ3pvZUdlpHcaQI0QTRo8NT4Zn8=
 github.com/yanzongzhen/nats-server v1.2.1/go.mod h1:hjagOUTapPb4RuRHvzkTfgWzQyv+noFYVdDdAN5Byck=
+github.com/yanzongzhen/nats-server v1.2.2/go.mod h1:hjagOUTapPb4RuRHvzkTfgWzQyv+noFYVdDdAN5Byck=
 github.com/yanzongzhen/nats-streaming-server v0.18.0/go.mod h1:qFIG8FECrs4KtzAOi6cZBlJNY4+LdQwJHKMt4k8OWWE=
 github.com/yanzongzhen/nats.go v1.10.2 h1:1prhlsbTj4od/UB+in7IDNEK61BCqFTI6NKrkb8piEo=
 github.com/yanzongzhen/nats.go v1.10.2/go.mod h1:yHL58PNxnI3J8RvWiXZCfm0nSoZk/XkO7ydkIuwUGsw=
